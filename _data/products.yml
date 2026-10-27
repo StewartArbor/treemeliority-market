@@ -1,0 +1,25 @@
+# Treemeliority Market product catalogue
+#
+# Add one record per product. Only records with active: true appear on the site.
+# shelf must be either: essentials or curiosities
+#
+# Example:
+#
+# - id: prism-reading-glasses
+#   active: true
+#   shelf: curiosities
+#   category: optics
+#   title: "90° Prism Reading Glasses"
+#   note: "Read while lying flat without converting your cervical spine into punctuation."
+#   image: "/assets/products/prism-reading-glasses.webp"
+#   price: "About $7"
+#   merchant: "AliExpress"
+#   affiliate_url: "https://..."
+#   badge: "Optical oddity"
+#
+# Optional fields:
+#   price, merchant, image, badge
+#
+# Do not publish a product without a real destination URL.
+
+[]
