@@ -37,113 +37,41 @@ lang: en
         <p>Objects that are repeatedly used, lost, worn out, replaced, or required for maintenance. Cheapness is useful here only when failure is boring rather than catastrophic.</p>
       </div>
 
-      <div class="shelf-grid">
-        <article class="shelf-card essential-card">
-          <span class="shelf-code">REPAIR</span>
-          <h3>Repair & replace</h3>
-          <p>Heat-shrink tubing, hook-and-loop ties, small fasteners, replacement feet, clips, seals, and other five-cent interventions that prevent a larger object becoming waste.</p>
-          <div class="shelf-tags"><span>maintenance</span><span>parts</span><span>repair</span></div>
-        </article>
-
-        <article class="shelf-card essential-card">
-          <span class="shelf-code">POWER</span>
-          <h3>Cables & adapters</h3>
-          <p>USB leads, simple adapters, cable sleeves, strain relief, and storage. Not mysterious mains electronics from vendors named BESTPOWER888.</p>
-          <div class="shelf-tags"><span>USB</span><span>adapters</span><span>cable care</span></div>
-        </article>
-
-        <article class="shelf-card essential-card">
-          <span class="shelf-code">GROW</span>
-          <h3>Plant maintenance</h3>
-          <p>Labels, propagation clips, grafting tape, small pruning tools, watering nozzles, nursery pots, and the apparatus of keeping botanical intentions from collapsing into amnesia.</p>
-          <a class="text-link" href="/guides/plant-care-tools/">Read the plant-care guide →</a>
-        </article>
-
-        <article class="shelf-card essential-card">
-          <span class="shelf-code">FIELD</span>
-          <h3>Field kit</h3>
-          <p>Notebooks, pencils, dry pouches, measuring tapes, compact lights, cases, and things that let an observation survive the walk home.</p>
-          <a class="text-link" href="/guides/field-notebook/">Build a field notebook system →</a>
-        </article>
-
-        <article class="shelf-card essential-card">
-          <span class="shelf-code">HOME</span>
-          <h3>Household maintenance</h3>
-          <p>Reusable cleaning pads, brushes, vacuum consumables, lint tools, hooks, organisers, and other objects whose great achievement is quietly preventing irritation.</p>
-          <div class="shelf-tags"><span>cleaning</span><span>storage</span><span>replacement</span></div>
-        </article>
-
-        <article class="shelf-card essential-card">
-          <span class="shelf-code">MEASURE</span>
-          <h3>Measure the environment</h3>
-          <p>Thermometers, hygrometers, rain gauges, simple meters, hand lenses, rulers, and other instruments that replace “seems about right” with a number.</p>
-          <a class="text-link" href="/guides/weather-stations/">Read the weather-station guide →</a>
-        </article>
+      {% assign essential_products = site.data.products | where: "active", true | where: "shelf", "essentials" %}
+      {% if essential_products.size > 0 %}
+      <div class="product-grid">
+        {% for product in essential_products %}
+        {% include product-card.html product=product %}
+        {% endfor %}
       </div>
+      {% else %}
+      <div class="empty-shelf">
+        <strong>The shelf is being stocked.</strong>
+        <p>No placeholder merchandise. Products appear here only after a real merchant link has been checked and added to the catalogue.</p>
+      </div>
+      {% endif %}
     </section>
 
     <section class="market-panel curiosities-panel" aria-labelledby="curiosities">
       <div class="panel-intro">
         <p class="eyebrow">DELIGHTFUL NON-NECESSITIES</p>
         <h2>Objects with an alibi, not a defence.</h2>
-        <p>Curiosities are selected for conceptual strangeness, visual ingenuity, optical trickery, or because some engineer looked at an ordinary problem and chose a wonderfully disproportionate solution.</p>
+        <p>Selected for conceptual strangeness, visual ingenuity, optical trickery, or because some engineer looked at an ordinary problem and chose a wonderfully disproportionate solution.</p>
       </div>
 
-      <div class="curiosity-grid">
-        <article class="curiosity-card">
-          <div class="specimen-number">C.01</div>
-          <div>
-            <span class="shelf-code">OPTICS</span>
-            <h3>Optical oddities</h3>
-            <p>Prism glasses for reading while horizontal, pocket microscopes, macro lenses, periscopic viewers, unusual magnifiers.</p>
-          </div>
-        </article>
-
-        <article class="curiosity-card">
-          <div class="specimen-number">C.02</div>
-          <div>
-            <span class="shelf-code">LIGHT</span>
-            <h3>Improbable lighting</h3>
-            <p>Levitating moons, magnetic lamps, projected sunsets, strange task lights, botanical silhouettes, luminous objects pretending not to be lamps.</p>
-          </div>
-        </article>
-
-        <article class="curiosity-card">
-          <div class="specimen-number">C.03</div>
-          <div>
-            <span class="shelf-code">PLANTS</span>
-            <h3>Strange planters</h3>
-            <p>Self-watering structures, transparent root-viewing pots, wall vessels, geometric propagation stations, and containers that make plant architecture visible.</p>
-          </div>
-        </article>
-
-        <article class="curiosity-card">
-          <div class="specimen-number">C.04</div>
-          <div>
-            <span class="shelf-code">MECHANICAL</span>
-            <h3>Mechanical objects</h3>
-            <p>Kinetic desk devices, magnetic mechanisms, analogue counters, miniature engines, linkages, and small machines whose entire purpose is to expose motion.</p>
-          </div>
-        </article>
-
-        <article class="curiosity-card">
-          <div class="specimen-number">C.05</div>
-          <div>
-            <span class="shelf-code">DISPLAY</span>
-            <h3>Things that reveal hidden processes</h3>
-            <p>Transparent displays, moisture visualisers, weather glasses, root viewers, miniature sensors, and objects that make invisible state legible.</p>
-          </div>
-        </article>
-
-        <article class="curiosity-card">
-          <div class="specimen-number">C.06</div>
-          <div>
-            <span class="shelf-code">ABSURD</span>
-            <h3>Useful absurdities</h3>
-            <p>Objects that solve a real problem by such an eccentric route that their utility and their comedy become inseparable.</p>
-          </div>
-        </article>
+      {% assign curiosity_products = site.data.products | where: "active", true | where: "shelf", "curiosities" %}
+      {% if curiosity_products.size > 0 %}
+      <div class="product-grid curiosity-products">
+        {% for product in curiosity_products %}
+        {% include product-card.html product=product %}
+        {% endfor %}
       </div>
+      {% else %}
+      <div class="empty-shelf dark">
+        <strong>The cabinet is presently empty.</strong>
+        <p>Curiosities will appear here as soon as they have a real merchant destination. No spectral products will be summoned merely to decorate the page.</p>
+      </div>
+      {% endif %}
     </section>
   </div>
 </section>
