@@ -1,0 +1,25 @@
+{% assign p = include.product %}
+<article class="product-card{% if p.shelf == 'curiosities' %} curiosity-product{% endif %}">
+  {% if p.badge %}<div class="product-badge">{{ p.badge }}</div>{% endif %}
+  {% if p.image %}
+  <a class="product-image" href="{{ p.affiliate_url }}" target="_blank" rel="nofollow sponsored noopener">
+    <img src="{{ p.image }}" alt="{{ p.title | escape }}" loading="lazy">
+  </a>
+  {% else %}
+  <a class="product-image product-image-placeholder" href="{{ p.affiliate_url }}" target="_blank" rel="nofollow sponsored noopener" aria-label="View {{ p.title | escape }}">
+    <span>{{ p.category | default: p.shelf | upcase }}</span>
+  </a>
+  {% endif %}
+  <div class="product-body">
+    <div class="product-meta">
+      <span>{{ p.category | default: p.shelf | upcase }}</span>
+      {% if p.merchant %}<span>{{ p.merchant }}</span>{% endif %}
+    </div>
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.note }}</p>
+    <div class="product-bottom">
+      <span class="product-price">{{ p.price | default: "See current price" }}</span>
+      <a class="product-link" href="{{ p.affiliate_url }}" target="_blank" rel="nofollow sponsored noopener">View product →</a>
+    </div>
+  </div>
+</article>
