@@ -26,6 +26,3 @@ exclude:
   - en
   - ru
   - kz
-  - _data
-  - _includes
-  - assets
